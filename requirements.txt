@@ -2,24 +2,6 @@
 ## to install everything -- pip install -r requirements.txt
 ## Python 3.9
 
-fastapi
-python-jose
-passlib
-a2wsgi
-uvicorn
-pandas
-requests
-xmltodict
-sqlalchemy
-numpy
-bs4
-openpyxl
-unidecode
-kmodes
-tensorflow
-python-multipart
-statistics
-scikit-learn
-tqdm 
-pyodbc
+plotly
+
 
