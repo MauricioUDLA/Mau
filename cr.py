@@ -4,7 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 # Cargar los datos
-df = pd.read_excel(r"C:\Users\mauricioalejandro.01\OneDrive - Universidad de Las Américas\Documentos\ASISTENTE DE PROYECTOS\Analisis Carreras\Datos_limpios_CR.xlsx")
+df = pd.read_excel("Datos_limpios_CR.xlsx")
 st.write("****ELASTICIDAD CR****")
 st.write("---")
 
