@@ -3,5 +3,5 @@
 ## Python 3.9
 
 plotly
-
+from scipy.optimize import fsolve
 
