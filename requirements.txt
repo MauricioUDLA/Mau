@@ -2,6 +2,7 @@
 ## to install everything -- pip install -r requirements.txt
 ## Python 3.9
 
+scipy
 plotly
 fsolve
 
