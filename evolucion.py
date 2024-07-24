@@ -9,9 +9,9 @@ st.title("EVOLUCIÓN CARRERAS HISTÓRICO")
 # Load data
 @st.cache_data
 def load_data():
-    dfhc = pd.read_excel(r"C:\Users\mauricioalejandro.01\OneDrive - Universidad de Las Américas\Documentos\ANALISTA DE PROYECTOS\Facu.xlsx", sheet_name='Cabezas')
-    dfht = pd.read_excel(r"C:\Users\mauricioalejandro.01\OneDrive - Universidad de Las Américas\Documentos\ANALISTA DE PROYECTOS\Facu.xlsx", sheet_name='Ticket')
-    dfhv = pd.read_excel(r"C:\Users\mauricioalejandro.01\OneDrive - Universidad de Las Américas\Documentos\ANALISTA DE PROYECTOS\Facu.xlsx", sheet_name='variacion')
+    dfhc = pd.read_excel("Facu.xlsx", sheet_name='Cabezas')
+    dfht = pd.read_excel("Facu.xlsx", sheet_name='Ticket')
+    dfhv = pd.read_excel("Facu.xlsx", sheet_name='variacion')
     return dfhc, dfht, dfhv
 
 # Read data
@@ -95,8 +95,8 @@ if not mean_carrera.empty:
 
 
 # Tables
-df_d=pd.read_excel(r"C:\Users\mauricioalejandro.01\OneDrive - Universidad de Las Américas\Documentos\ANALISTA DE PROYECTOS\Documentados.xlsx",sheet_name='Documentados')
-df_a=pd.read_excel(r"C:\Users\mauricioalejandro.01\OneDrive - Universidad de Las Américas\Documentos\ANALISTA DE PROYECTOS\Documentados.xlsx",sheet_name='Afluencias')
+df_d=pd.read_excel("Documentados.xlsx",sheet_name='Documentados')
+df_a=pd.read_excel("Documentados.xlsx",sheet_name='Afluencias')
 
 
 
