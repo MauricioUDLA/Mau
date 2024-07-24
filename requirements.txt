@@ -6,4 +6,6 @@ scipy
 plotly
 matplotlib
 seaborn
+openpyxl
+
 
