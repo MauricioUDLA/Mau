@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-df=pd.read_excel(r"C:\Users\mauricioalejandro.01\OneDrive - Universidad de Las Américas\Documentos\ANALISTA DE PROYECTOS\NOTAS_C1\SiglasVida.xlsx",sheet_name='BASE')
+df=pd.read_excel(r"SiglasVida.xlsx",sheet_name='BASE')
 
 
 
