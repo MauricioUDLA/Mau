@@ -7,5 +7,5 @@ plotly
 matplotlib
 seaborn
 openpyxl
-sklearn.decomposition
+sklearn
 
