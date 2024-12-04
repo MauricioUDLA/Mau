@@ -27,7 +27,7 @@ panel_df['Mes'] = panel_df['Fecha'].dt.month_name()
 panel_df['Año'] = panel_df['Fecha'].dt.year
 
 # df
-df = pd.read_excel(r"C:\Users\anthonydaniel.santi\Desktop\variable cuali-cuanti 2.xlsx", sheet_name='PCA Historico')
+df = pd.read_excel(r"variable_cuali-cuanti.xlsx", sheet_name='PCA Historico')
 
 # --------------------- Configuración de filtros ---------------------
 correos_unicos = ['Todos'] + panel_df['Correo'].dropna().unique().tolist()
