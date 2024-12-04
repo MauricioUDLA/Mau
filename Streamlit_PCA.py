@@ -7,7 +7,7 @@ import seaborn as sns
 
 # --------------------- Carga y preparación de datos ---------------------
 # Panel_df
-df3 = pd.read_excel(r"\variable cuali-cuanti 2.xlsx", sheet_name='PCA Com')
+df3 = pd.read_excel(r"variable cuali-cuanti 2.xlsx", sheet_name='PCA Com')
 numerical_data = df3[['Cumplimiento %', 'Beca']]
 scaler = StandardScaler()
 scaled_data = scaler.fit_transform(numerical_data)
