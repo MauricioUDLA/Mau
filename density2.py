@@ -34,7 +34,7 @@ if semestre_filter:
     plt.title(f"Density Plot for Semesters: {', '.join(map(str, semestre_filter))}")
     plt.xlabel("C1")
     plt.ylabel("Density")
-    plt.legend(title="Semestre"loc='best', bbox_to_anchor=(1, 1))
+    plt.legend(title="Semestre",loc='best', bbox_to_anchor=(1, 1))
     st.pyplot(plt)
 
     # Resumen estadístico de los datos seleccionados
