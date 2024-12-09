@@ -29,12 +29,27 @@ if semestre_filter:
     available_palettes = ["deep", "muted", "pastel", "dark", "colorblind", "viridis", "coolwarm"]
     selected_palette = st.selectbox("Choose a color palette", available_palettes, index=0)  # Default: "deep"
 
-    # Graficar
-    sns.kdeplot(data=filtered_df, x='C1', hue='Semestre', shade=True, palette=selected_palette)
+    # Crear figura para evitar superposición
+    plt.figure(figsize=(10, 6))
+
+    # Graficar densidad por semestre de forma iterativa para controlar la leyenda
+    for semestre in semestre_filter:
+        subset = filtered_df[filtered_df['Semestre'] == semestre]
+        sns.kdeplot(
+            data=subset, 
+            x='C1', 
+            label=str(semestre),  # Agrega manualmente el semestre a la leyenda
+            shade=True, 
+            palette=selected_palette
+        )
+
+    # Configurar título y etiquetas
     plt.title(f"Density Plot for Semesters: {', '.join(map(str, semestre_filter))}")
     plt.xlabel("C1")
     plt.ylabel("Density")
-    plt.legend(title="Semestre")
+    plt.legend(title="Semestre", loc='best')  # Asegura que la leyenda muestre los semestres seleccionados
+
+    # Mostrar el gráfico en Streamlit
     st.pyplot(plt)
 
     # Resumen estadístico de los datos seleccionados
