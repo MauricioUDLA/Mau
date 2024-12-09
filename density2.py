@@ -1,18 +1,12 @@
 
 
 
-import urllib
-import os
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 import streamlit as st
+import plotly.express as px
 
-df=pd.read_excel(r"SiglasVida.xlsx",sheet_name='BASE')
-
-
-
+# Cargar datos
+df = pd.read_excel("SiglasVida.xlsx", sheet_name='BASE')
 
 # Semestres seleccionados
 semestre_filter = st.multiselect("Select Semesters to Compare", df['Semestre'].unique())
@@ -26,16 +20,26 @@ if semestre_filter:
                      (df['VIDA_HOMOLOGACION'].isin(vida_homologacion_filter))]
 
     # Selección de paleta
-    available_palettes = ["deep", "muted", "pastel", "dark", "colorblind", "viridis", "coolwarm"]
-    selected_palette = st.selectbox("Choose a color palette", available_palettes, index=0)  # Default: "deep"
+    available_palettes = ["Viridis", "Cividis", "Plasma", "Inferno", "Magma", "Turbo", "Ice"]
+    selected_palette = st.selectbox("Choose a color palette", available_palettes, index=0)  # Default: "Viridis"
 
-    # Graficar
-    sns.kdeplot(data=filtered_df, x='C1', hue='Semestre', shade=True, palette=selected_palette)
-    plt.title(f"Density Plot for Semesters: {', '.join(map(str, semestre_filter))}")
-    plt.xlabel("C1")
-    plt.ylabel("Density")
-    plt.legend(title="Semestre",loc='best', bbox_to_anchor=(1, 1))
-    st.pyplot(plt)
+    # Graficar con Plotly
+    fig = px.density_contour(
+        filtered_df,
+        x="C1",
+        color="Semestre",
+        marginal_x="histogram",
+        title="Density Plot for Selected Semesters",
+        template="plotly"
+    )
+
+    # Personalización de colores
+    fig.update_layout(coloraxis_colorbar=dict(title="Semestre"),
+                      title=dict(x=0.5),
+                      template="plotly")
+
+    # Mostrar gráfico en Streamlit
+    st.plotly_chart(fig)
 
     # Resumen estadístico de los datos seleccionados
     describe_table = filtered_df.groupby('Semestre')['C1'].describe()
