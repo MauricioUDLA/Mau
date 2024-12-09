@@ -20,26 +20,16 @@ if semestre_filter:
                      (df['VIDA_HOMOLOGACION'].isin(vida_homologacion_filter))]
 
     # Selección de paleta
-    available_palettes = ["Viridis", "Cividis", "Plasma", "Inferno", "Magma", "Turbo", "Ice"]
-    selected_palette = st.selectbox("Choose a color palette", available_palettes, index=0)  # Default: "Viridis"
+    available_palettes = ["deep", "muted", "pastel", "dark", "colorblind", "viridis", "coolwarm"]
+    selected_palette = st.selectbox("Choose a color palette", available_palettes, index=0)  # Default: "deep"
 
-    # Graficar con Plotly
-    fig = px.density_contour(
-        filtered_df,
-        x="C1",
-        color="Semestre",
-        marginal_x="histogram",
-        title="Density Plot for Selected Semesters",
-        template="plotly"
-    )
-
-    # Personalización de colores
-    fig.update_layout(coloraxis_colorbar=dict(title="Semestre"),
-                      title=dict(x=0.5),
-                      template="plotly")
-
-    # Mostrar gráfico en Streamlit
-    st.plotly_chart(fig)
+    # Graficar
+    sns.kdeplot(data=filtered_df, x='C1', hue='Semestre', shade=True, palette=selected_palette)
+    plt.title(f"Density Plot for Semesters: {', '.join(map(str, semestre_filter))}")
+    plt.xlabel("C1")
+    plt.ylabel("Density")
+    plt.legend(title="Semestre")
+    st.pyplot(plt)
 
     # Resumen estadístico de los datos seleccionados
     describe_table = filtered_df.groupby('Semestre')['C1'].describe()
