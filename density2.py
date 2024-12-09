@@ -1,12 +1,18 @@
 
 
 
+import urllib
+import os
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 import streamlit as st
-import plotly.express as px
 
-# Cargar datos
-df = pd.read_excel("SiglasVida.xlsx", sheet_name='BASE')
+df=pd.read_excel(r"SiglasVida.xlsx",sheet_name='BASE')
+
+
+
 
 # Semestres seleccionados
 semestre_filter = st.multiselect("Select Semesters to Compare", df['Semestre'].unique())
